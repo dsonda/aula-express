@@ -5,7 +5,10 @@ var Controller = require('./../controller');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   Controller.list(req, res);
-  //res.render('list', { title: 'Listagem de Cervejas' });
 });
+
+router.get('/:id', function(req, res, next){
+  Controller.showBeer(req, res);
+})
 
 module.exports = router;

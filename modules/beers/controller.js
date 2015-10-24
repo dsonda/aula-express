@@ -66,6 +66,24 @@ var Controller = {
       }
       res.json(msg);
     });
+  }, 
+  showBeer: function (req, res) {
+    var query = {_id: req.params.id};
+
+    Model.findOne(query, function(err, data){
+      if (err){
+        console.log('Erro: ', err);
+        msg = err;
+      }
+      else {
+        console.log('Get: ', data);
+        msg = data;
+      }
+      res.render('beer', { 
+        title: 'Cerveja', 
+        beer: data     
+      });
+    });
   },  
   update: function (req, res) {
     var query = {_id: req.params.id};
