@@ -34,15 +34,25 @@ var Controller = {
       res.json(msg);
     });
   },
-  update: function (req, res) {
-    var query = {name: /skol/i};
+  get: function (req, res) {
+    var query = {_id: req.params.id};
 
-    var mod = {
-      name: 'Brahma',
-      alcohol: 4,
-      price: 6,
-      category: 'pilsen'
-    }
+    Model.findOne(query, function(err, data){
+      if (err){
+        console.log('Erro: ', err);
+        msg = err;
+      }
+      else {
+        console.log('Get: ', data);
+        msg = data;
+      }
+      res.json(msg);
+    });
+  },  
+  update: function (req, res) {
+    var query = {_id: req.params.id};
+
+    var mod = req.body;
 
     var optional = {
       upsert: false, // apenas atualizar

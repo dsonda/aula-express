@@ -12,4 +12,13 @@ router.post('/', function(req, res, next) {
   Controller.create(req, res);
 });
 
+router.put('/:id', function(req, res, next) {
+  Controller.update(req, res);
+});
+
+router.get('/:id', function(req, res, next) {
+  Controller.get(req, res);
+});
+
+
 module.exports = router;
