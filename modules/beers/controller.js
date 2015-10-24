@@ -73,7 +73,7 @@ var Controller = {
     });    
   },
   delete: function (req, res){
-    var query = {name: /brahma/i};
+    var query = {_id: req.params.id};
 
     // é multi: true CUIDADO!
     Model.remove(query, function (err, data){
